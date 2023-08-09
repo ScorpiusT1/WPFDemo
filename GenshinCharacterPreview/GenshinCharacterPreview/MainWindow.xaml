@@ -5,9 +5,101 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GenshinCharacterPreview"
         mc:Ignorable="d"
-       
-        Title="原神-英雄预览" Height="450" Width="800">
+        Title="原神-英雄预览"
+        Height="768"
+        Width="1080">
+    <Window.Resources>
+        <Style x:Key="RadioButtonStyle"
+               TargetType="RadioButton">
+            <Setter Property="FontSize"
+                    Value="25" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="Height"
+                    Value="50" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Grid>
+                            <Border x:Name="backColor">
+                                <Border.Background>
+                                    <LinearGradientBrush  StartPoint="0 0"
+                                                          EndPoint="1 0"
+                                                          Opacity="0.5">
+                                        <GradientStop Offset="0"
+                                                      Color="Black" />
+                                        <GradientStop Offset="1"
+                                                      Color="LightGray" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                            <Border>
+                                <StackPanel Orientation="Horizontal"
+                                            Margin="30 0 0 0">
+                                    <Rectangle Width="6"
+                                               Height="6"
+                                               Margin="0 0 20 0"
+                                               Fill="White">
+                                        <Rectangle.RenderTransform>
+                                            <RotateTransform Angle="45" />
+                                        </Rectangle.RenderTransform>
+                                    </Rectangle>
+                                    <ContentPresenter Content="{TemplateBinding Content}"
+                                                      VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="150" />
+        </Grid.RowDefinitions>
+
+        <!--背景-->
+        <Image Source="https://webstatic.mihoyo.com/upload/contentweb/2022/08/15/04d542b08cdee91e5dabfa0e85b8995e_8653892990016707198.jpg"
+               Grid.RowSpan="2"
+               Stretch="UniformToFill" />
+        <!--人物立绘-->
+        <Image Source="https://webstatic.mihoyo.com/upload/contentweb/2022/08/19/a15445b2b2e4443398eabf3b479f49e7_8073097535789989508.png"
+               Grid.RowSpan="2"
+               Stretch="UniformToFill" />
+        <Border BorderThickness="1.5 0 0 0"
+                Margin="29.25 0 0 0"
+                BorderBrush="White"
+                Opacity="0.35"
+                Grid.RowSpan="2" />
+
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Margin="0 100 0 0"
+                    Width="250">
+            <RadioButton Content="蒙德城"
+                         Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton Content="璃月港"
+                         Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton Content="稻妻城"
+                         Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton  Content="须弥城"
+                          Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton Content="敬请期待"
+                         IsEnabled="False"
+                         Style="{StaticResource RadioButtonStyle}" />
+        </StackPanel>
+
+        <ListBox Grid.Row="1" Opacity="0.3">
+           
+        </ListBox>
 
     </Grid>
 </Window>

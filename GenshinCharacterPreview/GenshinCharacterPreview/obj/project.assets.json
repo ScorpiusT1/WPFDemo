@@ -152,11 +152,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\C#\\WPF\\GenshinCharacterPreview\\GenshinCharacterPreview\\GenshinCharacterPreview.csproj",
+      "projectUniqueName": "E:\\Git仓库\\GenshinCharacterPreview\\GenshinCharacterPreview\\GenshinCharacterPreview.csproj",
       "projectName": "GenshinCharacterPreview",
-      "projectPath": "E:\\C#\\WPF\\GenshinCharacterPreview\\GenshinCharacterPreview\\GenshinCharacterPreview.csproj",
+      "projectPath": "E:\\Git仓库\\GenshinCharacterPreview\\GenshinCharacterPreview\\GenshinCharacterPreview.csproj",
       "packagesPath": "C:\\Users\\ScorpiusT1\\.nuget\\packages\\",
-      "outputPath": "E:\\C#\\WPF\\GenshinCharacterPreview\\GenshinCharacterPreview\\obj\\",
+      "outputPath": "E:\\Git仓库\\GenshinCharacterPreview\\GenshinCharacterPreview\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",
