@@ -4,10 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GenshinCharacterPreview"
+        xmlns:viewmodel="clr-namespace:GenshinCharacterPreview.ViewModels"
+        
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:model="clr-namespace:GenshinCharacterPreview.Models"
         mc:Ignorable="d"
         Title="原神-英雄预览"
-        Height="768"
-        Width="1080">
+        Height="720"
+        Width="1200">
     <Window.Resources>
         <Style x:Key="RadioButtonStyle"
                TargetType="RadioButton">
@@ -54,11 +58,28 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Style.Triggers>
 
-            </Style.Triggers>
         </Style>
+
+        <Storyboard  x:Key="protraitIn">
+            <DoubleAnimation Storyboard.TargetName="protraitPic"
+                             Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                             From="400"
+                             To="100"
+                             Duration="0:0:0.35" />
+        </Storyboard>
     </Window.Resources>
+
+    <Window.DataContext>
+        <viewmodel:MainWindowViewModel />
+    </Window.DataContext>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -66,12 +87,14 @@
         </Grid.RowDefinitions>
 
         <!--背景-->
-        <Image Source="https://webstatic.mihoyo.com/upload/contentweb/2022/08/15/04d542b08cdee91e5dabfa0e85b8995e_8653892990016707198.jpg"
+        <Image d:Source="https://webstatic.mihoyo.com/upload/contentweb/2022/08/15/04d542b08cdee91e5dabfa0e85b8995e_8653892990016707198.jpg"
                Grid.RowSpan="2"
-               Stretch="UniformToFill" />
+               Stretch="UniformToFill"
+               Source="{Binding BackgroundUrl}" />
         <!--人物立绘-->
-        <Image Source="https://webstatic.mihoyo.com/upload/contentweb/2022/08/19/a15445b2b2e4443398eabf3b479f49e7_8073097535789989508.png"
+        <Image d:Source="https://webstatic.mihoyo.com/upload/contentweb/2022/08/19/a15445b2b2e4443398eabf3b479f49e7_8073097535789989508.png"
                Grid.RowSpan="2"
+               Source="{Binding ElementName=charListBox,Path=SelectedItem.ProtraiUrl}"
                Stretch="UniformToFill" />
         <Border BorderThickness="1.5 0 0 0"
                 Margin="29.25 0 0 0"
@@ -85,20 +108,60 @@
                     Margin="0 100 0 0"
                     Width="250">
             <RadioButton Content="蒙德城"
-                         Style="{StaticResource RadioButtonStyle}" />
+                         Style="{StaticResource RadioButtonStyle}"
+                         Command="{Binding LoadCityCommand}"
+                         CommandParameter="150" />
             <RadioButton Content="璃月港"
-                         Style="{StaticResource RadioButtonStyle}" />
+                         Style="{StaticResource RadioButtonStyle}"
+                         Command="{Binding LoadCityCommand}"
+                         CommandParameter="151" />
             <RadioButton Content="稻妻城"
-                         Style="{StaticResource RadioButtonStyle}" />
+                         Style="{StaticResource RadioButtonStyle}"
+                         Command="{Binding LoadCityCommand}"
+                         CommandParameter="324" />
             <RadioButton  Content="须弥城"
-                          Style="{StaticResource RadioButtonStyle}" />
+                          Style="{StaticResource RadioButtonStyle}"
+                          Command="{Binding LoadCityCommand}"
+                          CommandParameter="350" />
             <RadioButton Content="敬请期待"
                          IsEnabled="False"
                          Style="{StaticResource RadioButtonStyle}" />
         </StackPanel>
 
-        <ListBox Grid.Row="1" Opacity="0.3">
+        <!--角色列表-->
+        <ListBox Name="charListBox"
+                 Grid.Row="1"
+                 BorderThickness="0"
+                 d:SelectedIndex="0"
+                 d:ItemsSource="{x:Null}"
+                 SelectedItem="{Binding SelectedItem}"
+                 Background="#33f0f8ff"
+                 ItemsSource="{Binding CharList}">
            
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical"
+                                Margin="10 5">
+                        <Image Source="{Binding IconUrl}" />
+                        <TextBlock Text="{Binding Name}"
+                                   FontSize="16"
+                                   HorizontalAlignment="Center" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+            <d:ListBox.Items>
+                <model:Character Name="神里绫华"
+                                 IconUrl="https://uploadstatic.mihoyo.com/contentweb/20210720/2021072011085576262.png" />
+                <model:Character Name="枫原万叶"
+                                 IconUrl="https://uploadstatic.mihoyo.com/contentweb/20210617/2021061716564818668.png" />
+            </d:ListBox.Items>
         </ListBox>
 
     </Grid>
