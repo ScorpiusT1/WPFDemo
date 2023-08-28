@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5rEfQLp4/EDEey/VFWvC7LMgnxXbgoI4rVVhM5/43EaDb7IhgTMDLZD/7r0/5ED8dWp86uwh6mgcd+360I6+Gw==",
+  "dgSpecHash": "KSmdXDoaw7+SDNmm4lXTFZtTgyKpeCavyqwDPJHCBeiRcTgkkEYyAmqreq/h1gjUQKb7JrCL3w1zKvF9G7XdeQ==",
   "success": true,
   "projectFilePath": "E:\\Git仓库\\GenshinCharacterPreview\\GenshinCharacterPreview\\GenshinCharacterPreview.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\ScorpiusT1\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.1\\communitytoolkit.mvvm.8.2.1.nupkg.sha512",
-    "C:\\Users\\ScorpiusT1\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512",
-    "C:\\Users\\ScorpiusT1\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }
